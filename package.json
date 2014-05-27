@@ -1,0 +1,26 @@
+{
+  "name": "cli-args",
+  "version": "1.0.0",
+  "description": "small command line parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "cli",
+    "args",
+    "argument",
+    "options",
+    "command",
+    "parser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joaquimserafim/cli-args.git"
+  },
+  "author": "@joaquimserafim",
+  "license": "ISC",
+  "devDependencies": {
+    "tape": "^2.13.1"
+  }
+}

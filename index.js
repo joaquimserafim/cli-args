@@ -1,7 +1,7 @@
 
 function convert (val) {
   if (/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(val)) return Number(val);
-  if (/^(true|false)$/.test(val)) return Boolean(val);
+  if (/^(true|false)$/.test(val)) return 'true' === val;
   if (/(\d{4}-\d{2}-\d{1,2}).*/.test(val)) return new Date(val);
   if (/null/.test(val)) return null;
   if (/undefined/.test(val)) return undefined;

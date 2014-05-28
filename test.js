@@ -2,8 +2,8 @@ var test = require('tape');
 var parser = require('./');
 
 
-test('', function (t) {
-  t.plan(6);
+test('parsing the various types', function (t) {
+  t.plan(7);
 
   t.deepEqual(parser(['--port', '80']),
               { _: [], port: 80 },
@@ -24,6 +24,8 @@ test('', function (t) {
   t.deepEqual(parser(['--undefined_arg', 'undefined']),
               { _: [], undefined_arg: undefined},
               'parse a undefined value - undefined_arg: undefined');
+
+  t.deepEqual(parser(['--reboot=false']), {_: [], reboot: false}, 'parse a boolean - reboot: false');
 
   t.deepEqual(parser(['--port', '80',
                      'test1', 'test2',

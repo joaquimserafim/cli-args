@@ -1,6 +1,6 @@
 {
   "name": "cli-args",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "small command line parser",
   "main": "index.js",
   "scripts": {

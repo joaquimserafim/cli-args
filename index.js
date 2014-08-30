@@ -1,4 +1,3 @@
-
 function convert (val) {
   if (/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(val)) return Number(val);
   if (/^(true|false)$/.test(val)) return 'true' === val;
@@ -18,10 +17,10 @@ function parser (args) {
   var obj = {_: []};
 
   for (var i = 0; i < args.length; i++) {
-    if (args[i].indexOf('--') === 0) {
-      key = args[i].replace('--', '');
+    if (/^-\w|^--\w*=\w*/.test(args[i])) {
+      key = args[i].replace(/^--/, '').replace(/^-/, '');
 
-      // let pass args this way --app=80
+      // let pass args this way --app=80 or -p 80
       if (/=/.test(key)) {
         var splArg = key.split('=');
         obj[splArg[0]] = convert(splArg[1]);
@@ -34,7 +33,10 @@ function parser (args) {
     if (key) {
       obj[key] = convert(args[i]);
       key = null;
-    } else {
+    }
+    else {
+      if (/^--/.test(args[i])) args[i] = args[i].replace('--', '');
+        
       obj._.push(convert(args[i]));
     }
   }

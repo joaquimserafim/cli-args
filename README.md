@@ -23,18 +23,17 @@ small command line parser
 	
 .
 
-	$ node ex1.js --a hello --b world --c 2014.5
-	{ _: [], a: 'hello', b: 'world', c: 2014.5 }
+	$ node ex1.js -a hello -b world -c 2014.5 --hello
+	{ _: ['hello'], a: 'hello', b: 'world', c: 2014.5 }
 	
 .
 	
-	$ node ex2.js --date "2014-05-23T12:00:00" --port=80 --clean=false foo --exit null
+	$ node ex2.js --date="2014-05-23T12:00:00" --port=80 --clean=false foo --exit
 	{ 
-		_: ['foo'],
+		_: ['foo', 'exit'],
 		date: Thu May 23 2014 12:00:02 GMT+0100 (WEST),
 		port: 80,
-		clean: false,
-		exit: null	
+		clean: false
 	}
 
 

@@ -9,7 +9,9 @@
 small command line parser 
 
 
-**V1**
+**V1.2**
+
+**100% of code coverage** (npm test & npm run coverage)
 
 ####app
 

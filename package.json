@@ -1,10 +1,13 @@
 {
   "name": "cli-args",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "small command line parser",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/tape/bin/tape test.js && ./node_modules/istanbul/lib/cli.js check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "jshint": "./node_modules/jshint/bin/jshint -c .jshintrc index.js test.js",
+    "codestyle": "./node_modules/jscs/bin/jscs -p google index.js test.js",
+    "coverage": "open coverage/lcov-report/index.html"
   },
   "keywords": [
     "cli",
@@ -21,6 +24,15 @@
   "author": "@joaquimserafim",
   "license": "ISC",
   "devDependencies": {
+    "istanbul": "^0.3.2",
+    "jscs": "^1.7.3",
+    "jshint": "^2.5.6",
+    "pre-commit": "0.0.9",
     "tape": "^2.14.0"
-  }
+  },
+  "pre-commit": [
+    "jshint",
+    "codestyle",
+    "test"
+  ]
 }

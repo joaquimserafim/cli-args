@@ -1,17 +1,24 @@
-function convert (val) {
-  if (/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(val)) return Number(val);
-  if (/^(true|false)$/.test(val)) return 'true' === val;
-  if (/(\d{4}-\d{2}-\d{1,2}).*/.test(val)) return new Date(val);
-  if (/null/.test(val)) return null;
-  if (/undefined/.test(val)) return undefined;
+'use strict';
 
-  return val;
+function convert(val) {
+  if (/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(val)) {
+    return Number(val);
+  } else if (/^(true|false)$/.test(val)) {
+    return 'true' === val;
+  } else if (/(\d{4}-\d{2}-\d{1,2}).*/.test(val)) {
+    return new Date(val);
+  } else if (/null/.test(val)) {
+    return null;
+  } else if (/undefined/.test(val)) {
+    return undefined;
+  } else {
+    return val;
+  }
 }
-
 
 module.exports = parser;
 
-function parser (args) {
+function parser(args) {
   args = args || process.argv.slice(2);
   var key;
   var obj = {_: []};
@@ -33,10 +40,11 @@ function parser (args) {
     if (key) {
       obj[key] = convert(args[i]);
       key = null;
-    }
-    else {
-      if (/^--/.test(args[i])) args[i] = args[i].replace('--', '');
-        
+    } else {
+      if (/^--/.test(args[i])) {
+        args[i] = args[i].replace('--', '');
+      }
+
       obj._.push(convert(args[i]));
     }
   }

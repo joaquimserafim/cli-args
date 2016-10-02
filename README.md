@@ -11,33 +11,30 @@
 small command line parser 
 
 
-**V1.2**
-
-**100% of code coverage** (npm test & npm run coverage)
-
-####app
+#### require
 
 	var args = require('cli-args')
 			
 			
-####example
+#### examples
 
-	var args = require('cli-args')(process.argv.slice(2));
-	console.dir(args);
+```js
+var args = require('cli-args')(process.argv.slice(2));
+console.dir(args);
 	
-.
 
-	$ node ex1.js -a hello -b world -c 2014.5 --hello
-	{ _: ['hello'], a: 'hello', b: 'world', c: 2014.5 }
-	
-.
-	
-	$ node ex2.js --date="2014-05-23T12:00:00" --port=80 --clean=false foo --exit
-	{ 
-		_: ['foo', 'exit'],
-		date: Thu May 23 2014 12:00:02 GMT+0100 (WEST),
-		port: 80,
-		clean: false
-	}
 
+$ node ex1.js -a hello -b world -c 2014.5 --hello
+{ _: ['hello'], a: 'hello', b: 'world', c: 2014.5 }
+
+
+	
+$ node ex2.js --date="2014-05-23T12:00:00" --port=80 --clean=false foo --exit
+{ 
+	_: ['foo', 'exit'],
+	date: Thu May 23 2014 12:00:02 GMT+0100 (WEST),
+	port: 80,
+	clean: false
+}
+```
 

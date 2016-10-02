@@ -2,7 +2,9 @@
 
 <a href="https://nodei.co/npm/cli-args/"><img src="https://nodei.co/npm/cli-args.png?downloads=true"></a>
 
-[![Build Status](https://travis-ci.org/joaquimserafim/cli-args.png?branch=master)](https://travis-ci.org/joaquimserafim/cli-args)
+[![Build Status](https://travis-ci.org/joaquimserafim/cli-args.png?branch=master)](https://travis-ci.org/joaquimserafim/cli-args)![Code Coverage 100%](https://img.shields.io/badge/code%20coverage-100%25-green.svg?style=flat-square)[![ISC License](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://github.com/joaquimserafim/eventloop-info/blob/master/LICENSE)[![NodeJS](https://img.shields.io/badge/node-6-brightgreen.svg?style=flat-square)](https://github.com/joaquimserafim/eventloop-info/blob/master/package.json#L14)
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 
 ####summary

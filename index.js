@@ -1,52 +1,66 @@
-'use strict';
+/*
+eslint
+no-multi-spaces: ["error", {exceptions: {"VariableDeclarator": true}}]
+padded-blocks: ["error", {"classes": "always"}]
+max-len: ["error", 80]
+*/
+'use strict'
 
-function convert(val) {
+function convert (val) {
   if (/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(val)) {
-    return Number(val);
-  } else if (/^(true|false)$/.test(val)) {
-    return 'true' === val;
-  } else if (/(\d{4}-\d{2}-\d{1,2}).*/.test(val)) {
-    return new Date(val);
-  } else if (/null/.test(val)) {
-    return null;
-  } else if (/undefined/.test(val)) {
-    return undefined;
-  } else {
-    return val;
+    return Number(val)
   }
+
+  if (/^(true|false)$/.test(val)) {
+    return val === 'true'
+  }
+
+  if (/(\d{4}-\d{2}-\d{1,2}).*/.test(val)) {
+    return new Date(val)
+  }
+
+  if (/null/.test(val)) {
+    return null
+  }
+
+  if (/undefined/.test(val)) {
+    return undefined
+  }
+
+  return val
 }
 
-module.exports = parser;
+module.exports = parser
 
-function parser(args) {
-  args = args || process.argv.slice(2);
-  var key;
-  var obj = {_: []};
+function parser (args) {
+  args = args || process.argv.slice(2)
+  var key
+  var obj = {_: []}
 
   for (var i = 0; i < args.length; i++) {
     if (/^-\w|^--\w*=\w*/.test(args[i])) {
-      key = args[i].replace(/^--/, '').replace(/^-/, '');
+      key = args[i].replace(/^--/, '').replace(/^-/, '')
 
-      // let pass args this way --app=80 or -p 80
+      // passing args this way --app=80 or -p 80
       if (/=/.test(key)) {
-        var splArg = key.split('=');
-        obj[splArg[0]] = convert(splArg[1]);
-        key = null;
+        var splArg = key.split('=')
+        obj[splArg[0]] = convert(splArg[1])
+        key = null
       }
 
-      continue;
+      continue
     }
 
     if (key) {
-      obj[key] = convert(args[i]);
-      key = null;
+      obj[key] = convert(args[i])
+      key = null
     } else {
       if (/^--/.test(args[i])) {
-        args[i] = args[i].replace('--', '');
+        args[i] = args[i].replace('--', '')
       }
 
-      obj._.push(convert(args[i]));
+      obj._.push(convert(args[i]))
     }
   }
-  return obj;
+  return obj
 }
